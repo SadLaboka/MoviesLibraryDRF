@@ -20,6 +20,7 @@ class CategoryAdmin(admin.ModelAdmin):
     """Категории"""
     list_display = ("id", "title", "slug")
     list_display_links = ("title",)
+    prepopulated_fields = {'slug': ('title',)}
 
 
 class ReviewInlines(admin.TabularInline):
@@ -46,6 +47,7 @@ class MovieAdmin(admin.ModelAdmin):
     list_display = ("title", "category", "slug", "draft")
     list_filter = ("category", "genres", "year")
     search_fields = ("title", "category__title")
+    prepopulated_fields = {'slug': ('title',)}
     inlines = [MovieShotsInline, ReviewInlines]
     save_on_top = True
     save_as = True
@@ -116,6 +118,7 @@ class ReviewAdmin(admin.ModelAdmin):
 class GenreAdmin(admin.ModelAdmin):
     """Жанры"""
     list_display = ("title", "slug")
+    prepopulated_fields = {'slug': ('title',)}
 
 
 @admin.register(Actor)
