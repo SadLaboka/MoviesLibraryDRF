@@ -113,7 +113,7 @@ class MovieShots(models.Model):
 
 class RatingStar(models.Model):
     """Звезда рейтинга"""
-    value = models.PositiveSmallIntegerField("Значение", default=0)
+    value = models.PositiveSmallIntegerField("Значение", default=0, unique=True)
 
     def __str__(self):
         return f'{self.value}'
@@ -127,7 +127,7 @@ class RatingStar(models.Model):
 class Rating(models.Model):
     """Рейтинг"""
     ip = models.CharField("IP адрес", max_length=15)
-    star = models.ForeignKey(RatingStar, on_delete=models.CASCADE, verbose_name="звезда")
+    star = models.ForeignKey(RatingStar, to_field='value', on_delete=models.CASCADE, verbose_name="звезда")
     movie = models.ForeignKey(
         Movie,
         on_delete=models.CASCADE,
