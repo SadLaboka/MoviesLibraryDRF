@@ -36,7 +36,6 @@ class Actor(models.Model):
         return reverse('actor_detail', kwargs={'slug': self.name})
 
     class Meta:
-        ordering = ['name']
         verbose_name = "Актеры и режиссеры"
         verbose_name_plural = "Актеры и режиссеры"
 

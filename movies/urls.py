@@ -6,12 +6,12 @@ from . import views
 
 
 urlpatterns = format_suffix_patterns([
-    path("movie/", views.MovieViewSet.as_view({'get': 'list'})),
-    path("movie/<int:pk>/", views.MovieViewSet.as_view({'get': 'retrieve'})),
-    path("review/", views.ReviewCreateViewSet.as_view({'post': 'create'})),
-    path("rating/", views.AddStarRatingViewSet.as_view({'post': 'create'})),
-    path('actor/', views.ActorViewSet.as_view({'get': 'list'})),
-    path('actor/<int:pk>/', views.ActorViewSet.as_view({'get': 'retrieve'})),
+    path("movie/", views.MovieViewSet.as_view({'get': 'list'}), name='movies_list'),
+    path("movie/<int:pk>/", views.MovieViewSet.as_view({'get': 'retrieve'}), name='movie_detail'),
+    path("review/", views.ReviewCreateViewSet.as_view({'post': 'create'}), name='review_create'),
+    path("rating/", views.AddStarRatingViewSet.as_view({'post': 'create'}), name='rating_add'),
+    path('actor/', views.ActorViewSet.as_view({'get': 'list'}), name='actors_list'),
+    path('actor/<int:pk>/', views.ActorViewSet.as_view({'get': 'retrieve'}), name='actor_detail'),
 ])
 
 
