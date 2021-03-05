@@ -2,29 +2,18 @@ import mock
 
 from django.urls import reverse
 from django.core.files import File
-from django.core.files.uploadedfile import SimpleUploadedFile
 from rest_framework import status
 from rest_framework.test import APITestCase
-from django.contrib.auth import get_user_model
 
 from datetime import date
-from PIL import Image
 
 from .models import Movie, Category, Actor, Genre, Rating, RatingStar, Review
-
-User = get_user_model()
 
 
 class MoviesAPITestCase(APITestCase):
     def setUp(self) -> None:
         file_mock = mock.MagicMock(spec=File)
         file_mock.name = 'test_poster.jpg'
-
-        # image = SimpleUploadedFile(
-        #     'test_image.jpg',
-        #     content=b'',
-        #     content_type='image/jpg'
-        # )
 
         self.genre = Genre.objects.create(
             title='test genre',
